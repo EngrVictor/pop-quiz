@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz console</title>
+	<style type="text/css">
+		h3 {
+			margin: 0;
+			padding: 0;
+			display: inline-block;
+		}
+
+		p {
+			margin: 0 0 0 10px;
+			padding: 0;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<h1>A simple javaScript quiz made with object oriented programming</h1>
+	<h2>Instructions</h2>
+	<ul>
+		<li>right click anywhere on the browser</li>
+		<li>then click on inspect</li>
+		<li>then click on console instead of element</li>
+		<li>read and answer all questions correctly</li>
+		<li>enter your answers in the prompt window</li>
+		<li>click enter</li>
+	</ul>
+
+	<span><h3>Note: </h3><p>All questions carry <code>1mark</code> each.</p></span>
+
+	<h4>&copy; made by <a href="#">Gentle Coder</a> with ❤</h4>
+	
+	<script type="text/javascript">
+
+		(function() {
+			let Question = function(question, answers, correct) {
+				this.question = question;
+				this.answers = answers;
+				this.correct = correct;
+			};
+
+			// let score = 0;
+			
+			Question.prototype.renderQuestion = function() {
+				console.log(this.question);
+				for (var i = 0; i < this.answers.length; i++) {
+					console.log(i + '. ' + this.answers[i]);
+				}
+			};
+			
+			
+
+			Question.prototype.correctAns = function() {
+				let ans = prompt('Enter your answer as number \nEg 0, 1 or 2 Thanks 👍');
+
+				if (ans == this.correct) {
+					// score += 1;
+					// console.log('Correct answer your new score is ' + score);
+					console.log('Correct answer 🤗');
+				} else {
+					console.log('Wrong answer please try again 😥')
+				}
+			};
+
+
+			let question1 = new Question('What is the real name of the developer of this quiz app', ['Okpara Victor', 'Arinze Chukuma', 'Ugochukwu Okpala'], 0);
+			let question2 = new Question('What programming language was use to display the Instructions', ['CSS', 'javaScript', 'HTML'], 2);
+			let question3 = new Question('Which of this is a python framework', ['Laravel', 'Django', 'Grinder'], 1);
+			let question4 = new Question('What is the full meaning of AJAX', ['All JavaScript Array Xray', 'Asynchronious JavaScript And Xml', 'Angular JavaScript And Xapper'], 1);
+			let question5 = new Question('Which of the languages makes content for the user interface', ['frontend', 'backend', 'database'], 1);
+			
+			let allQuestions = [question1, question2, question3, question4, question5];
+			
+			function randomQuestion() {
+				let rand = Math.floor(Math.random() * allQuestions.length);
+				allQuestions[rand].renderQuestion();
+				allQuestions[rand].correctAns();
+			}
+
+			randomQuestion();
+		})();
+
+		
+
+	</script>
+</body>
+</html>
